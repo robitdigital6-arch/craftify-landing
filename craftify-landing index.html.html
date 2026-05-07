@@ -643,6 +643,120 @@ h2.section-title .grad {
   justify-content: center;
 }
 
+/* ── CONTACT FORM ── */
+.form-section {
+  position: relative;
+  z-index: 10;
+  padding: 100px 32px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.form-wrap {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 56px 48px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.form-wrap h2 {
+  font-family: 'Epilogue', sans-serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  margin-bottom: 12px;
+}
+.form-wrap p {
+  color: var(--white-50);
+  font-size: 15px;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.form-field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white-50);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.form-field input,
+.form-field textarea,
+.form-field select {
+  background: var(--white-06);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  min-height: 52px;
+  width: 100%;
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--white-20);
+}
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  border-color: rgba(26,111,255,0.5);
+  background: var(--white-10);
+}
+.form-field textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+.form-field select option {
+  background: var(--navy-mid);
+  color: var(--white);
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-submit {
+  margin-top: 8px;
+  width: 100%;
+  padding: 16px 32px;
+  background: var(--electric);
+  color: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  min-height: 56px;
+  box-shadow: 0 0 40px rgba(26,111,255,0.35);
+  transition: all 0.2s;
+}
+.form-submit:hover {
+  background: var(--electric-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 0 60px rgba(26,111,255,0.5);
+}
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 32px;
+  color: var(--accent);
+}
+@media (max-width: 600px) {
+  .form-wrap { padding: 36px 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-section { padding: 72px 20px; }
+}
+
 /* ── FOOTER ── */
 footer {
   position: relative;
@@ -965,6 +1079,53 @@ footer small {
     <a href="https://craftify-tech.com/expertise-and-services" class="btn-ghost" target="_blank">
       Explore Services
     </a>
+  </div>
+</div>
+
+<!-- CONTACT FORM -->
+<div class="full-divider"></div>
+<div class="form-section">
+  <div class="form-wrap">
+    <div class="eyebrow">Get in Touch</div>
+    <h2>Request a free <span class="grad">consultation</span></h2>
+    <p>Tell us about your challenge — we'll match you with the right expert within 24 hours.</p>
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
+      <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="_to" value="info@craftify-tech.com">
+      <p style="display:none;"><input name="bot-field"></p>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Jonas Brigitta" required>
+        </div>
+        <div class="form-field">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" placeholder="Acme Corp">
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="email">Work Email</label>
+        <input type="email" id="email" name="email" placeholder="you@company.com" required>
+      </div>
+      <div class="form-field">
+        <label for="industry">Industry</label>
+        <select id="industry" name="industry">
+          <option value="" disabled selected>Select your industry</option>
+          <option value="finance">Finance & Fintech</option>
+          <option value="healthcare">Healthcare & Life Sciences</option>
+          <option value="manufacturing">Manufacturing & Industrial</option>
+          <option value="retail">Retail & E-commerce</option>
+          <option value="saas">SaaS & Technology</option>
+          <option value="government">Government & Public Sector</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="message">What's your main challenge?</label>
+        <textarea id="message" name="message" placeholder="Describe your security challenge or what you're looking to achieve..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message →</button>
+    </form>
   </div>
 </div>
 
